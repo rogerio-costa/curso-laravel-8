@@ -68,6 +68,16 @@
     </div>
   </nav>
 
+
+  @if (session('msg'))
+  <div class="container p-3">
+    <div class="alert alert-success" role="alert">
+      {{ session('msg') }}
+    </div>
+  </div>
+  @endif
+
+
   @yield('conteudo')
 
   <!-- JavaScript (Opcional) -->

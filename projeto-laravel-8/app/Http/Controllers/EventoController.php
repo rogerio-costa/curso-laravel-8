@@ -25,6 +25,6 @@ class EventoController extends Controller
     {
         $evento = $request->all();
         Evento::create($evento);
-        return redirect()->route('eventos.index');
+        return redirect()->route('eventos.index')->with('msg', 'Evento criado com sucesso');
     }
 }
