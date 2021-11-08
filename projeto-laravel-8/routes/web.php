@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AulaController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,22 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Controller::class, 'index'])->name('index');
 
 
-Route::get('/aula4', function () {
+Route::get('/aula4', [AulaController::class, 'aula4'])->name('aulas.aula4');
 
-    $nome = "Korra";
-    $idade = 23;
-    $elementos = ["terra", "fogo", "ar", "água"];
-    return view(
-        'aula4',
-        [
-            'nome' => $nome,
-            'idade' => $idade,
-            'elementos' => $elementos
-        ]
-    );
-});
+
+Route::get('/aula8/{id?}', [AulaController::class, 'aula8'])->name('aulas.aula8');
+
+//Rotas EVENTOS
+
+Route::get('/eventos', [EventoController::class, 'index'])->name('eventos.index');
+
+Route::get('/eventos/create', [EventoController::class, 'create'])->name('eventos.create');
+
+Route::post('/eventos/store', [EventoController::class, 'store'])->name('eventos.store');
+
+// END rotas EVENTOS
+
